@@ -1,6 +1,6 @@
 resource "aws_vpc_peering_connection" "cicd-peer" {
   peer_vpc_id = data.terraform_remote_state.net.outputs.vpc-eks-out
-  vpc_id      = data.aws_vpc.vpc-cicd-out.id
+  vpc_id      = data.aws_vpc.vpc-cicd.id
   auto_accept = true
 }
 

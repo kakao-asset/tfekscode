@@ -3,8 +3,8 @@ resource "aws_security_group_rule" "sg-cicd-22" {
   from_port         = 443
   to_port           = 443
   protocol          = "tcp"
-  cidr_blocks       = [data.terraform_remote_state.net.outputs.eks-cidr]
-  security_group_id = data.aws_security_group.cicd-sg.id
+  cidr_blocks       = [data.terraform_remote_state.net.outputs.eks-cidr-out]
+  security_group_id = data.aws_security_group.eks-cicd-sg.id
 }
 
 resource "aws_security_group_rule" "sg-cicd-eks-all" {
@@ -12,8 +12,8 @@ resource "aws_security_group_rule" "sg-cicd-eks-all" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  cidr_blocks       = [data.terraform_remote_state.net.outputs.eks-cidr]
-  security_group_id = data.aws_security_group.cicd-sg.id
+  cidr_blocks       = [data.terraform_remote_state.net.outputs.eks-cidr-out]
+  security_group_id = data.aws_security_group.eks-cicd-sg.id
 }
 
 resource "aws_security_group_rule" "sg-cicd-self" {
@@ -22,7 +22,7 @@ resource "aws_security_group_rule" "sg-cicd-self" {
   to_port           = 0
   protocol          = "-1"
   self              = true
-  security_group_id = data.aws_security_group.cicd-sg.id
+  security_group_id = data.aws_security_group.eks-cicd-sg.id
 }
 
 resource "aws_security_group_rule" "sg-cicd-egress" {
@@ -31,5 +31,5 @@ resource "aws_security_group_rule" "sg-cicd-egress" {
   to_port           = 0
   protocol          = "-1"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = data.aws_security_group.cicd-sg.id
+  security_group_id = data.aws_security_group.eks-cicd-sg.id
 }

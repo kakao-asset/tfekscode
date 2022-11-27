@@ -1,4 +1,4 @@
-data "aws_route_table" "rtb-cicd-private1" {
+data "aws_route_table" "cicd-rtb" {
   vpc_id = data.aws_vpc.vpc-cicd.id
   filter {
     name   = "tag:Name"
