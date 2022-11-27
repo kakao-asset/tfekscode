@@ -26,9 +26,8 @@ resource "aws_eks_cluster" "cluster" {
       data.terraform_remote_state.net.outputs.cluster-sg,
     ]
     subnet_ids = [
-      data.terraform_remote_state.net.outputs.sub-priv1,
-      data.terraform_remote_state.net.outputs.sub-priv2,
-      data.terraform_remote_state.net.outputs.sub-priv3,
+      data.terraform_remote_state.net.outputs.sub-private1-out,
+      data.terraform_remote_state.net.outputs.sub-private2-out
     ]
   }
   encryption_config {
