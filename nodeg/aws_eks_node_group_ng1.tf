@@ -14,8 +14,9 @@ resource "aws_eks_node_group" "ng1" {
   node_role_arn   = data.terraform_remote_state.iam.outputs.nodegroup_role_arn
 
   subnet_ids = [
-    data.terraform_remote_state.net.outputs.sub-private1-out,
-    data.terraform_remote_state.net.outputs.sub-private2-out,
+    data.terraform_remote_state.net.outputs.sub-priv1,
+    data.terraform_remote_state.net.outputs.sub-priv2,
+    data.terraform_remote_state.net.outputs.sub-priv3,
   ]
   tags = {
     "eks/cluster-name"                            = data.aws_eks_cluster.eks_cluster.name
