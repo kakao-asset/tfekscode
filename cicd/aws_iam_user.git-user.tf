@@ -3,7 +3,7 @@ resource "aws_iam_user" "git-user" {
 
 
   tags = {
-    workshop = "eks-cicd"
+    kakao = "eks-cicd"
   }
 }
 

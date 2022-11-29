@@ -60,6 +60,6 @@ resource "aws_codebuild_project" "eks-cicd-build-app" {
     subnets = [
       data.aws_subnet.cicd.id,
     ]
-    vpc_id = data.aws_vpc.cicd.id
+    vpc_id = data.aws_vpc.vpc-cicd.id
   }
 }

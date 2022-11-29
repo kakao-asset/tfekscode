@@ -1,7 +1,7 @@
 data "aws_security_group" "cicd" {
-  vpc_id = data.aws_vpc.cicd.id
+  vpc_id = data.aws_vpc.vpc-cicd.id
   filter {
-    name   = "tag:workshop"
+    name   = "tag:kakao"
     values = ["eks-cicd"]
   }
 }

@@ -1,7 +1,7 @@
 data "aws_vpc" "cicd" {
   default = false
   filter {
-    name   = "tag:workshop"
-    values = ["eks-cicd"]
+    name   = "tag:kakao"
+    values = ["vpc-cicd"]
   }
 }

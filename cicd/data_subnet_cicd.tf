@@ -1,7 +1,7 @@
 data "aws_subnet" "cicd" {
 
   filter {
-    name   = "tag:workshop"
+    name   = "tag:kakao"
     values = ["cicd-private1"]
   }
 }
