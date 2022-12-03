@@ -1,1 +1,0 @@
-../../tf-setup/var-karpenter-version.tf
