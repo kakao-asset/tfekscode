@@ -12,12 +12,12 @@ resource "kubernetes_ingress_v1" "kakaoasset-ingress" {
         path {
           path = "/*"
           backend {
-            service{
-             #name = "kakaoasset-frontend-svc"
-             name = "front-svc"
-             port{
-               number = 3000
-             }
+            service {
+              #name = "kakaoasset-frontend-svc"
+              name = "front-svc"
+              port {
+                number = 3000
+              }
             }
           }
         }

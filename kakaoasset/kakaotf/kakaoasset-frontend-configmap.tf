@@ -1,6 +1,6 @@
 resource "kubernetes_config_map" "kakaoasset-frontend-cm" {
   metadata {
-    name = "kakaoasset-frontend-cm"
+    name      = "kakaoasset-frontend-cm"
     namespace = "kakaoasset"
   }
 

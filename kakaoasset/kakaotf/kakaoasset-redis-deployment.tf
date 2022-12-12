@@ -1,7 +1,7 @@
-resource "kubernetes_deployment" "kakaoasset-rdb-deploy" {
+resource "kubernetes_deployment" "kakaoasset-redis-deploy" {
 
   metadata {
-    name      = "kakaoasset-rdb-deploy"
+    name      = "kakaoasset-redis-deploy"
     namespace = "kakaoasset"
   }
 
@@ -9,7 +9,7 @@ resource "kubernetes_deployment" "kakaoasset-rdb-deploy" {
     replicas = 1
     selector {
       match_labels = {
-        "app" = "rdb"
+        "app" = "redis"
       }
     }
     strategy {
@@ -24,7 +24,7 @@ resource "kubernetes_deployment" "kakaoasset-rdb-deploy" {
     template {
       metadata {
         annotations = {}
-        labels      = { "app" = "rdb" }
+        labels      = { "app" = "redis" }
       }
 
       spec {
@@ -34,15 +34,15 @@ resource "kubernetes_deployment" "kakaoasset-rdb-deploy" {
         termination_grace_period_seconds = 30
 
         container {
-          image             = "mariadb"
-          #format("%s.dkr.ecr.%s.amazonaws.com/rdb:nolb", data.aws_caller_identity.current.account_id, data.aws_region.current.name)
+          image = "redis"
+          #format("%s.dkr.ecr.%s.amazonaws.com/redis:nolb", data.aws_caller_identity.current.account_id, data.aws_region.current.name)
           image_pull_policy = "Always"
-          name              = "rdb"
+          name              = "redis"
           port {
-            container_port = 3306
+            container_port = 6379
             protocol       = "TCP"
           }
-          
+
           resources {
           }
         }

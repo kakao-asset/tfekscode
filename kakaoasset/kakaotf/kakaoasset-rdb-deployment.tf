@@ -1,15 +1,15 @@
-resource "kubernetes_deployment" "kakaoasset-frontend-deploy" {
+resource "kubernetes_deployment" "kakaoasset-rdb-deploy" {
 
   metadata {
-    name      = "kakaoasset-frontend-deploy"
+    name      = "kakaoasset-rdb-deploy"
     namespace = "kakaoasset"
   }
 
   spec {
-    replicas = 4
+    replicas = 1
     selector {
       match_labels = {
-        "app" = "frontend"
+        "app" = "rdb"
       }
     }
     strategy {
@@ -24,7 +24,7 @@ resource "kubernetes_deployment" "kakaoasset-frontend-deploy" {
     template {
       metadata {
         annotations = {}
-        labels      = { "app" = "frontend" }
+        labels      = { "app" = "rdb" }
       }
 
       spec {
@@ -34,19 +34,13 @@ resource "kubernetes_deployment" "kakaoasset-frontend-deploy" {
         termination_grace_period_seconds = 30
 
         container {
-          image             = "ehdwn15100/frontend:1.0"
-          #format("%s.dkr.ecr.%s.amazonaws.com/frontend:nolb", data.aws_caller_identity.current.account_id, data.aws_region.current.name)
+          image = "mariadb"
+          #format("%s.dkr.ecr.%s.amazonaws.com/rdb:nolb", data.aws_caller_identity.current.account_id, data.aws_region.current.name)
           image_pull_policy = "Always"
-          name              = "frontend"
+          name              = "rdb"
           port {
-            container_port = 3000
+            container_port = 3306
             protocol       = "TCP"
-          }
-          
-          env_from {
-            config_map_ref {
-              name = "kakaoasset-frontend-cm"
-            }
           }
 
           resources {

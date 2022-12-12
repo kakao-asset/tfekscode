@@ -1,6 +1,6 @@
 resource "kubernetes_secret" "kakaoasset-backend-sec" {
   metadata {
-    name = "kakaoasset-backend-sec"
+    name      = "kakaoasset-backend-sec"
     namespace = "kakaoasset"
   }
 

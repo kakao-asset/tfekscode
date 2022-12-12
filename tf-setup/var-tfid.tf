@@ -1,11 +1,11 @@
 variable "tfid" {
   description = "The unique ID for the project"
   type        = string
-  default     = "e855f1e80c14a165"
+  default     = "6825053a5aa193d4"
 }
 
 variable "keyid" {
   description = "The KMS key ID for the project"
   type        = string
-  default     = "102f48cc-5d9a-42e6-aa73-9cddb28b8676"
+  default     = "7fe3945a-b99e-4061-a63f-64343f4678ff"
 }

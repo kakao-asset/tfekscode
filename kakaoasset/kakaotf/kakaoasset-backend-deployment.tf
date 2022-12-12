@@ -34,7 +34,7 @@ resource "kubernetes_deployment" "kakaoasset-backend-deploy" {
         termination_grace_period_seconds = 30
 
         container {
-          image             = "ehdwn15100/backend:2.0"
+          image = "ehdwn15100/backend:2.0"
           #format("%s.dkr.ecr.%s.amazonaws.com/backend:nolb", data.aws_caller_identity.current.account_id, data.aws_region.current.name)
           image_pull_policy = "Always"
           name              = "backend"
@@ -42,12 +42,12 @@ resource "kubernetes_deployment" "kakaoasset-backend-deploy" {
             container_port = 8080
             protocol       = "TCP"
           }
-          
+
           env_from {
             config_map_ref {
               name = "kakaoasset-backend-cm"
             }
-            
+
             secret_ref {
               name = "kakaoasset-backend-sec"
             }

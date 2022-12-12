@@ -31,9 +31,9 @@ resource "aws_eks_node_group" "ng1" {
   }
 
   scaling_config {
-    desired_size = 4
-    max_size     = 6
-    min_size     = 2
+    desired_size = 4  #4
+    max_size     = 6  #6
+    min_size     = 2  #2
   }
 
   lifecycle {

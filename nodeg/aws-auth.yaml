@@ -6,13 +6,18 @@ data:
       - system:nodes
       rolearn: arn:aws:iam::752518105514:role/eks-nodegroup-ng-ma-NodeInstanceRole-1GFKA1037E1XO
       username: system:node:{{EC2PrivateDNSName}}
+  mapUsers: "- userarn: arn:aws:iam::752518105514:user/rapa0004  \n  username: admin\n
+    \ groups:\n    - system:masters\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2022-12-02T15:02:39Z"
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"mapUsers":"- userarn: arn:aws:iam::752518105514:user/rapa0004  \n  username: admin\n  groups:\n    - system:masters\n"},"kind":"ConfigMap","metadata":{"annotations":{},"creationTimestamp":"2022-12-06T03:25:52Z","name":"aws-auth","namespace":"kube-system","resourceVersion":"2706","uid":"64582e2e-269b-457f-a21a-52aae01ab7d9"}}
+  creationTimestamp: "2022-12-06T03:25:52Z"
   name: aws-auth
   namespace: kube-system
-  resourceVersion: "2076"
-  uid: 0eaa1691-62bf-4135-bf36-a82f801d43e7
+  resourceVersion: "581229"
+  uid: 64582e2e-269b-457f-a21a-52aae01ab7d9
 data:
   mapUsers: |
     - userarn: arn:aws:iam::752518105514:user/rapa0004  
